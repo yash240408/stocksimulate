@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <form action="/quote" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="symbol" name="symbol" placeholder="Stock Name" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Find</button>
+    </form> <br><br><br><br>
+
+    {% if item %}
+    
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="text-start">The share {{ item.name }} cost</th>
+                    <th class="text-start">Last updated time</th>
+                    <th class="text-start">Last close cost</th>
+                    <th class="text-center">Primary Exchange source</th>
+                    <th class="text-end">Last week highest price</th>
+                    <th class="text-end">Last week lowest price</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <td class="text-start">{{ usd_function(item.price) }}</td>
+                        <td class="text-start">{{ item.name }}</td>
+                        <td class="text-start">{{ item.prev }}</td>
+                        <td class="text-center">{{ item.exchange }}</td>
+                        <td class="text-end">{{ item.high }}</td>
+                        <td class="text-end">{{ item.low }}</td>
+                    </tr>
+            </tbody>
+        </table>
+    {% endif %}
+
+{% endblock %}
+

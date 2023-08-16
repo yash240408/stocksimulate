@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home Page
+{% endblock %}
+
+{% block main %}
+    <br>
+    <hr>
+    <h2> Buy History</h2><br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-start">Symbol</th>
+                <th class="text-start">Name</th>
+                <th class="text-center">Shares</th>
+                <th class="text-end">Price</th>
+                <th class="text-end">Transacted On</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for value in buy %}
+                <tr>
+                    <td class="text-start">{{ value.symbol }}</td>
+                    <td class="text-start">{{ value.name }}</td>
+                    <td class="text-center">{{ value.shares }}</td>
+                    <td class="text-end">{{ usd(value.price) }}</td>
+                    <td class="text-end">{{ value.timimg }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <hr>
+    <h2> Sell History</h2><br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-start">Symbol</th>
+                <th class="text-start">Name</th>
+                <th class="text-center">Shares</th>
+                <th class="text-end">Price</th>
+                <th class="text-end">Transacted On</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for value in sell %}
+                <tr>
+                    <td class="text-start">{{ value.symbol }}</td>
+                    <td class="text-start">{{ value.name }}</td>
+                    <td class="text-center">{{ value.shares }}</td>
+                    <td class="text-end">{{ usd(value.price) }}</td>
+                    <td class="text-end">{{ value.timimg }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <hr>
+    <img src="stocksimulate/profit.jpg" alt="" srcset="">
+{% endblock %}
+
