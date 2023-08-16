@@ -5,7 +5,7 @@ import urllib.parse
 from flask import redirect, render_template, request, session
 from functools import wraps
 
-API_KEY = "pk_c783efd153a94128b3fae061dddaa975"
+API_KEY = "pk_c593f81a17d04c7598f2afc12ce9abd1"
 def apology(message, code=400):
     """Render message as an apology to user."""
     def escape(s):
@@ -41,7 +41,7 @@ def lookup(symbol):
     # Contact API
     try:
         api_key = API_KEY
-        url = f"https://cloud.iexapis.com/stable/stock/{urllib.parse.quote_plus(symbol)}/quote?token={api_key}"
+        url = f"https://cloud.iexapis.com/stable/stock/{urllib.parse.quote_plus(symbol).upper()}/quote?token={api_key}"
         response = requests.get(url)
         response.raise_for_status()
     except requests.RequestException:
